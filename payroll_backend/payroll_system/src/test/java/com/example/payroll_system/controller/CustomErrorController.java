@@ -1,0 +1,31 @@
+package com.example.payroll_system.controller;
+
+import org.springframework.boot.web.servlet.error.ErrorController;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.http.HttpServletRequest;
+
+@Controller
+public class CustomErrorController implements ErrorController {
+
+    @RequestMapping("/error")
+    public String handleError(HttpServletRequest request) {
+        // Get the error status code
+        Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
+        
+        if (status != null) {
+            int statusCode = Integer.parseInt(status.toString());
+            // Log or return custom error messages for different status codes
+            if (statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
+                return "error/500";  // You can create a custom 500 error page
+            }
+        }
+        return "error/general";  // Default error page
+    }
+}
+
+
+

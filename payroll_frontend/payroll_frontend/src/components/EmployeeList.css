@@ -1,0 +1,244 @@
+.dashboard-container {
+    display: flex;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #f8f9fa, #ffffff);
+    min-height: 100vh; /* Allows scrolling */
+    flex-direction: column; /* Adjust content direction */
+}
+
+/* Header Styling */
+.dashboard-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #004085;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between; /* Move logout to the right */
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Application Name - Centered */
+.dashboard-header h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    flex-grow: 1; /* This ensures the app name takes up available space */
+}
+
+/* Logout Button */
+.logout-button {
+    background: linear-gradient(90deg, #ff4d4d, #dc3545);
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(220, 53, 69, 0.2);
+    margin-left: 20px; /* Space between logout and app name */
+}
+
+.logout-button:hover {
+    background: linear-gradient(90deg, #e60000, #bd2130);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(220, 53, 69, 0.3);
+}
+
+/* Remove Sidebar */
+.dashboard-sidebar {
+    display: none; /* This removes the sidebar */
+}
+
+/* Main Content */
+.dashboard-main {
+    padding: 30px;
+    margin-top: 150px; /* Adjusted for header height */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content */
+    overflow-y: auto; /* Enable scrolling */
+    flex-grow: 1; /* Allow the main section to take available space */
+}
+
+/* Add Employee Button - Top-right of Table */
+.add-employee-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px; /* Space between button and table */
+}
+
+.add-employee-button {
+    background: linear-gradient(90deg, #28a745, #218838);
+    color: white;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(40, 167, 69, 0.2);
+    display: inline-block;
+}
+
+.add-employee-button:hover {
+    background: linear-gradient(90deg, #218838, #1e7e34);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(40, 167, 69, 0.3);
+}
+
+/* Center the table */
+.employee-table {
+    width: 100%;
+    max-width: 1200px; /* Limit width */
+    margin: 20px auto; /* Center the table horizontally */
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Table Styling */
+.employee-table th,
+.employee-table td {
+    text-align: left;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.employee-table th {
+    background: #004085;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.employee-table td {
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.employee-table tr:hover {
+    background: #f1f3f5;
+}
+
+/* Table Action Buttons */
+.action-buttons a,
+.action-buttons button {
+    text-decoration: none;
+    padding: 10px 20px;
+    margin-right: 8px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.edit-button {
+    background: linear-gradient(90deg, #17a2b8, #138496);
+    color: white;
+}
+
+.delete-button {
+    background: linear-gradient(90deg, #e60000, #bd2130);
+    color: white;
+}
+
+.details-button {
+    background: linear-gradient(90deg, #ffc107, #e0a800);
+    color: #333;
+}
+
+.leaves-button {
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    color: white;
+}
+
+.action-buttons a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.edit-button:hover {
+    background: #138496;
+}
+
+.delete-button:hover {
+    background: #c82333;
+}
+
+.details-button:hover {
+    background: #e0a800;
+}
+
+.leaves-button:hover {
+    background: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-main {
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    .employee-table th,
+    .employee-table td {
+        font-size: 12px;
+    }
+
+    /* Add Employee Button - Top-right of Table */
+/* Container for Add Employee Button */
+.add-employee-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end; /* Align the button to the right */
+    margin-bottom: 20px; /* Add space between button and the table */
+    position: absolute; /* Position it above the table */
+    top: 80px; /* Adjust position so it sits above the table */
+}
+
+/* Add Employee Button Style */
+.add-employee-button {
+    background: linear-gradient(90deg, #28a745, #218838);
+    color: white;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(40, 167, 69, 0.2);
+    display: inline-block;
+}
+
+/* Add Employee Button Hover Effect */
+.add-employee-button:hover {
+    background: linear-gradient(90deg, #218838, #1e7e34);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(40, 167, 69, 0.3);
+}
+
+/* Centering the Table */
+.employee-table {
+    width: 100%;
+    max-width: 1200px; /* Limit width */
+    margin: 20px auto; /* Center the table horizontally */
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+}

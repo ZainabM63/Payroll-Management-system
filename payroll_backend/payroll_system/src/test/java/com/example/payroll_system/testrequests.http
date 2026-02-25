@@ -1,0 +1,42 @@
+# GET request to retrieve all leaves
+# POST request to add a new leave
+# PUT request to update an existing leave
+# POST request to add a new leave
+# Update leave data for an employee (replace `123` with employee ID)
+PUT  http://localhost:8080/api/employees/144/details
+Content-Type: application/json
+
+{
+  "name": "Zainab Mughal",
+  "jobTitle": "IT HEAD",
+  "department": "IT",
+  "dateOfBirth": "2004-11-29",
+  "dateOfJoining": "2024-12-05",
+  "salary": 50000.00,
+
+  "bankAccounts": [
+    {  "accountId":119,
+      "bankName": "XYZ BANK",
+      "accountNumber": "12345678908665"
+    }
+  ],
+  "taxes": [
+    { "taxId":82,
+      "taxYear": 2025,
+      "taxableIncome": 50000.00,
+      "taxRate": 7,
+      "taxAmount": 3500.00
+    }
+  ],
+  "payrolls": [
+
+    {  "payrollId":99,
+      "salaryDate": "2024-12-18",
+      "basicSalary": 56000.00,
+      "allowances": 2009.00,
+      "deductions": 1000.00,
+      "netSalary": 57009.00
+    }
+  ],
+  "leaves": []
+}
