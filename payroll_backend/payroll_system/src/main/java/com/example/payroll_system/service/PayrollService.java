@@ -38,7 +38,7 @@ public class PayrollService {
 
     // Get payrolls by employee ID
     public List<PayrollDTO> getPayrollsByEmployeeId(Long employeeId) {
-        List<Payroll> payrolls = payrollRepository.findByEmployeeId(employeeId);
+        List<Payroll> payrolls = payrollRepository.findByEmployeeEmployeeId(employeeId);
         return payrolls.stream()
                 .map(this::mapToPayrollDTO)
                 .collect(Collectors.toList());

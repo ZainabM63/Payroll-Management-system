@@ -7,5 +7,6 @@ import java.util.List;
 
 @Repository
 public interface LeaveRepository extends JpaRepository<Leave, Long> {
-    List<Leave> findByEmployeeEmployeeId(Long employeeId);
+    // Was: findByEmployeeId
+List<Leave> findByEmployeeEmployeeId(Long employeeId);
 }

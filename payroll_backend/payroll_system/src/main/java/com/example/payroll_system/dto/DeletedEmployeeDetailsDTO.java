@@ -14,6 +14,7 @@ public class DeletedEmployeeDetailsDTO {
     private List<DeletedTax> taxes;
     private List<DeletedLeave> leaves;
     private List<DeletedBankAccount> bankAccounts;
+	
 	public DeletedEmployee getEmployee() {
 		return employee;
 	}

@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface Emporepo extends JpaRepository<Employee, Long> {
+public interface Emperepo extends JpaRepository<Employee, Long> {
     List<Employee> findByIsDeleted(boolean isDeleted);
 }

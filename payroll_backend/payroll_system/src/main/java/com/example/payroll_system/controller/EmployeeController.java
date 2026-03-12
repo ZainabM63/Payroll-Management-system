@@ -39,7 +39,7 @@ public class EmployeeController {
     public List<EmployeeDTO> getAllEmployees() {
         return employeeService.getAllEmployees();
     }
-
+    
     @GetMapping("/{id}/details")
     public EmployeeDetailsDTO getEmployeeDetails(@PathVariable Long id) {
         return employeeService.getEmployeeDetails(id);

@@ -88,7 +88,7 @@ public class BankAccountService {
     
     // Get bank accounts by employee ID
     public List<BankAccountDTO> getBankAccountsByEmployeeId(Long employeeId) {
-        List<BankAccount> bankAccounts = bankAccountRepository.findByEmployeeId(employeeId);
+        List<BankAccount> bankAccounts = bankAccountRepository.findByEmployeeEmployeeId(employeeId);
         return bankAccounts.stream()
                 .map(this::mapToBankAccountDTO)
                 .collect(Collectors.toList());

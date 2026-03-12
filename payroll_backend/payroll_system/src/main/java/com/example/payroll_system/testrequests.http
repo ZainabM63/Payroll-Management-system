@@ -3,7 +3,7 @@
 # PUT request to update an existing leave
 # POST request to add a new leave
 # Update leave data for an employee (replace `123` with employee ID)
-PUT  http://localhost:8080/api/employees/144/details
+POST  http://localhost:8080/api/employees/add
 Content-Type: application/json
 
 {

@@ -3,9 +3,10 @@ package com.example.payroll_system.model;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 @Entity
-@Table(name = "employees") // corrected table name
+@Table(name = "employeess") // corrected table name
 public class Employee {
 
     @Id
@@ -35,7 +36,18 @@ public class Employee {
 
     @Column(name = "is_deleted")
     private Boolean isDeleted = false;
+    
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<BankAccount> bankAccounts;
 
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Leave> leaves;
+
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Tax> taxes;
+
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Payroll> payrolls;
     // Getters and setters
     public Long getEmployeeId() { return employeeId; }
     public void setEmployeeId(Long employeeId) { this.employeeId = employeeId; }

@@ -1,69 +1,68 @@
-import axios from 'axios';
+import axios from "axios";
 
-const API_BASE_URL = 'http://localhost:8080/api';
+// Create an Axios instance with baseURL and withCredentials
+const api = axios.create({
+  baseURL: "http://localhost:8080/api",
+  withCredentials: true,
+});
 
-// Helper function to handle API requests
 const apiService = {
   // Employees API
-  getEmployees: () => axios.get(`${API_BASE_URL}/employees`),
-  getEmployeeById: (id) => axios.get(`${API_BASE_URL}/employees/${id}`),
-  createEmployee: (data) => axios.post(`${API_BASE_URL}/employees`, data),
-  updateEmployee: (id, data) => axios.put(`${API_BASE_URL}/employees/${id}`, data),
-  deleteEmployee: (id) => axios.delete(`${API_BASE_URL}/employees/${id}`),
-  
-  getDeletedEmployees: () => axios.get(`${API_BASE_URL}/deleted/employees`),
-  getDeletedEmployeeById: (id) => axios.get(`${API_BASE_URL}/deleted/employee/${id}/details`),
-  getDeletedEmployeesWithDetails: () => axios.get(`${API_BASE_URL}/employees/details`),
-    // Other APIs
-  getEmployeeDetails: (id) => axios.get(`${API_BASE_URL}/employees/${id}/details`), 
-  getLeaves: () => axios.get(`${API_BASE_URL}/leaves`),
-  createLeave: (data) => axios.post(`${API_BASE_URL}/leaves`, data),
+  getEmployees: () => api.get(`/employees`),
+  getEmployeeById: (id) => api.get(`/employees/${id}`),
+  createEmployee: (data) => api.post(`/employees`, data),
+  updateEmployee: (id, data) => api.put(`/employees/${id}`, data),
+  deleteEmployee: (id) => api.delete(`/employees/${id}`),
 
-  // Payrolls API
-  getPayrolls: () => axios.get(`${API_BASE_URL}/payrolls`),
-  getPayrollById: (id) => axios.get(`${API_BASE_URL}/payrolls/${id}`),
-  createPayroll: (data) => axios.post(`${API_BASE_URL}/payrolls`, data),
-  addPayroll: (employeeId, data) => axios.post(`${API_BASE_URL}/employees/${employeeId}/payrolls`, data),
-  updatePayroll: (id, data) => axios.put(`${API_BASE_URL}/payrolls/${id}`, data),
+  getDeletedEmployees: () => api.get(`/deleted/employees`),
+  getDeletedEmployeeById: (id) => api.get(`/deleted/employee/${id}/details`),
+  getDeletedEmployeesWithDetails: () => api.get(`/employees/details`),
+  getEmployeeDetails: (id) => api.get(`/employees/${id}/details`),
 
-  // Taxes API
-  getTax: () => axios.get(`${API_BASE_URL}/taxes`),
-  createTax: (data) => axios.post(`${API_BASE_URL}/taxes`, data),
-  updateTax: (id, data) => axios.put(`${API_BASE_URL}/taxes/${id}`, data),  // Added updateTax
-  addTax: (data) => axios.post(`${API_BASE_URL}/taxes`, data),  // Added addTax
-  
-  // Bank Accounts API
+  // Leaves
+  getLeaves: () => api.get(`/leaves`),
+  createLeave: (data) => api.post(`/leaves`, data),
 
-    
-    getBankAccounts: () => axios.get(`${API_BASE_URL}/bankaccounts`),
-    createBankAccount: (data) => axios.post(`${API_BASE_URL}/bankaccounts`, data),
-    updateBankAccount: (id, data) => axios.put(`${API_BASE_URL}/bankaccounts/${id}`, data),
-    addBankAccount: (employeeId, bankAccount) =>
-      axios.post(`${API_BASE_URL}/employees/${employeeId}/bankaccounts`, bankAccount),
+  // Payrolls
+  getPayrolls: () => api.get(`/payrolls`),
+  getPayrollById: (id) => api.get(`/payrolls/${id}`),
+  createPayroll: (data) => api.post(`/payrolls`, data),
+  addPayroll: (employeeId, data) => api.post(`/employees/${employeeId}/payrolls`, data),
+  updatePayroll: (id, data) => api.put(`/payrolls/${id}`, data),
 
-  
-  // Delete any entity (leave, payroll, tax, bankAccount)
+  // Taxes
+  getTax: () => api.get(`/taxes`),
+  createTax: (data) => api.post(`/taxes`, data),
+  updateTax: (id, data) => api.put(`/taxes/${id}`, data),
+  addTax: (data) => api.post(`/taxes`, data),
+
+  // Bank Accounts
+  getBankAccounts: () => api.get(`/bankaccounts`),
+  createBankAccount: (data) => api.post(`/bankaccounts`, data),
+  updateBankAccount: (id, data) => api.put(`/bankaccounts/${id}`, data),
+  addBankAccount: (employeeId, bankAccount) => api.post(`/employees/${employeeId}/bankaccounts`, bankAccount),
+
+  // Generic delete
   deleteEntity: (type, id) => {
     let endpoint;
-    switch(type) {
-      case 'leave':
-        endpoint = `/api/leaves/${id}`;
+    switch (type) {
+      case "leave":
+        endpoint = `/leaves/${id}`;
         break;
-      case 'payroll':
-        endpoint = `/api/payrolls/${id}`;
+      case "payroll":
+        endpoint = `/payrolls/${id}`;
         break;
-      case 'tax':
-        endpoint = `/api/taxes/${id}`;
+      case "tax":
+        endpoint = `/taxes/${id}`;
         break;
-      case 'bankAccount':
-        endpoint = `/api/bankaccounts/${id}`;
+      case "bankAccount":
+        endpoint = `/bankaccounts/${id}`;
         break;
       default:
-        throw new Error('Unknown type');
+        throw new Error("Unknown type");
     }
-    
-    return axios.delete(endpoint);  // Send DELETE request to the appropriate endpoint
-  }
+    return api.delete(endpoint); // use instance
+  },
 };
 
 export default apiService;

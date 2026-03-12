@@ -41,7 +41,7 @@ public class TaxService {
 
     // Get taxes by employee ID (returns a list of TaxDTO)
     public List<TaxDTO> getTaxesByEmployeeId(Long employeeId) {
-        List<Tax> taxes = taxRepository.findByEmployeeId(employeeId);
+        List<Tax> taxes = taxRepository.findByEmployeeEmployeeId(employeeId);
         return taxes.stream()
                 .map(this::mapToTaxDTO)
                 .collect(Collectors.toList());

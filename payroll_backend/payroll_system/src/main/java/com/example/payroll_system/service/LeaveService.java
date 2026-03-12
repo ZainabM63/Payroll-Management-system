@@ -37,7 +37,7 @@ public class LeaveService {
     }
 
     public List<LeaveDTO> getLeavesByEmployeeId(Long employeeId) {
-        return leaveRepository.findByEmployeeId(employeeId).stream()
+        return leaveRepository.findByEmployeeEmployeeId(employeeId).stream()
                 .map(this::mapToLeaveDTO)
                 .collect(Collectors.toList());
     }

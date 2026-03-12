@@ -3,6 +3,7 @@ package com.example.payroll_system.model;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+
 import jakarta.persistence.*;
 @Entity
 @Table(name = "deleted_leaves")
