@@ -1,11 +1,10 @@
 package com.example.payroll_system.model;
 
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 
-import jakarta.persistence.*;
-
 @Entity
-@Table(name = "Tax")
+@Table(name = "tax")
 public class Tax {
 
     @Id
@@ -14,9 +13,9 @@ public class Tax {
     private Long taxId;
 
     @ManyToOne
-    @JoinColumn(name = "employee_id")
+    @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
-    
+
     @Column(name = "tax_year")
     private Integer taxYear;
 
@@ -29,52 +28,22 @@ public class Tax {
     @Column(name = "tax_amount", precision = 10, scale = 2)
     private BigDecimal taxAmount;
 
-    // Getters and Setters
-    public Long getTaxId() {
-        return taxId;
-    }
+    // Getters and setters
+    public Long getTaxId() { return taxId; }
+    public void setTaxId(Long taxId) { this.taxId = taxId; }
 
-    public void setTaxId(Long taxId) {
-        this.taxId = taxId;
-    }
+    public Employee getEmployee() { return employee; }
+    public void setEmployee(Employee employee) { this.employee = employee; }
 
-    public Employee getEmployee() {
-        return employee;
-    }
+    public Integer getTaxYear() { return taxYear; }
+    public void setTaxYear(Integer taxYear) { this.taxYear = taxYear; }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
+    public BigDecimal getTaxableIncome() { return taxableIncome; }
+    public void setTaxableIncome(BigDecimal taxableIncome) { this.taxableIncome = taxableIncome; }
 
-    public Integer getTaxYear() {
-        return taxYear;
-    }
+    public BigDecimal getTaxRate() { return taxRate; }
+    public void setTaxRate(BigDecimal taxRate) { this.taxRate = taxRate; }
 
-    public void setTaxYear(Integer taxYear) {
-        this.taxYear = taxYear;
-    }
-
-    public BigDecimal getTaxableIncome() {
-        return taxableIncome;
-    }
-
-    public void setTaxableIncome(BigDecimal taxableIncome) {
-        this.taxableIncome = taxableIncome;
-    }
-
-    public BigDecimal getTaxRate() {
-        return taxRate;
-    }
-
-    public void setTaxRate(BigDecimal taxRate) {
-        this.taxRate = taxRate;
-    }
-
-    public BigDecimal getTaxAmount() {
-        return taxAmount;
-    }
-
-    public void setTaxAmount(BigDecimal taxAmount) {
-        this.taxAmount = taxAmount;
-    }
+    public BigDecimal getTaxAmount() { return taxAmount; }
+    public void setTaxAmount(BigDecimal taxAmount) { this.taxAmount = taxAmount; }
 }

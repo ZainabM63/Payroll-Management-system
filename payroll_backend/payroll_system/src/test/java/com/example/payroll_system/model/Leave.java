@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "leave")
+@Table(name = "leave_table")
 public class Leave {
 
     @Id

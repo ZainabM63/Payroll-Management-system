@@ -1,7 +1,6 @@
 package com.example.payroll_system.model;
 
 import jakarta.persistence.*;
-
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -15,8 +14,8 @@ public class Payroll {
     private Long payrollId;
 
     @ManyToOne
-    @JoinColumn(name = "employee_id", referencedColumnName = "employee_id")
-    private Employee employee;  // The employee relationship should be here, not employeeId
+    @JoinColumn(name = "employee_id", nullable = false)
+    private Employee employee;
 
     @Column(name = "salary_date")
     @Temporal(TemporalType.DATE)
@@ -34,60 +33,25 @@ public class Payroll {
     @Column(name = "net_salary", precision = 10, scale = 2)
     private BigDecimal netSalary;
 
-    // Getters and Setters
-    public Long getPayrollId() {
-        return payrollId;
-    }
+    // Getters and setters
+    public Long getPayrollId() { return payrollId; }
+    public void setPayrollId(Long payrollId) { this.payrollId = payrollId; }
 
-    public void setPayrollId(Long payrollId) {
-        this.payrollId = payrollId;
-    }
+    public Employee getEmployee() { return employee; }
+    public void setEmployee(Employee employee) { this.employee = employee; }
 
-    public Employee getEmployee() {
-        return employee;
-    }
+    public Date getSalaryDate() { return salaryDate; }
+    public void setSalaryDate(Date salaryDate) { this.salaryDate = salaryDate; }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
+    public BigDecimal getBasicSalary() { return basicSalary; }
+    public void setBasicSalary(BigDecimal basicSalary) { this.basicSalary = basicSalary; }
 
-    public Date getSalaryDate() {
-        return salaryDate;
-    }
+    public BigDecimal getAllowances() { return allowances; }
+    public void setAllowances(BigDecimal allowances) { this.allowances = allowances; }
 
-    public void setSalaryDate(Date salaryDate) {
-        this.salaryDate = salaryDate;
-    }
+    public BigDecimal getDeductions() { return deductions; }
+    public void setDeductions(BigDecimal deductions) { this.deductions = deductions; }
 
-    public BigDecimal getBasicSalary() {
-        return basicSalary;
-    }
-
-    public void setBasicSalary(BigDecimal basicSalary) {
-        this.basicSalary = basicSalary;
-    }
-
-    public BigDecimal getAllowances() {
-        return allowances;
-    }
-
-    public void setAllowances(BigDecimal allowances) {
-        this.allowances = allowances;
-    }
-
-    public BigDecimal getDeductions() {
-        return deductions;
-    }
-
-    public void setDeductions(BigDecimal deductions) {
-        this.deductions = deductions;
-    }
-
-    public BigDecimal getNetSalary() {
-        return netSalary;
-    }
-
-    public void setNetSalary(BigDecimal netSalary) {
-        this.netSalary = netSalary;
-    }
+    public BigDecimal getNetSalary() { return netSalary; }
+    public void setNetSalary(BigDecimal netSalary) { this.netSalary = netSalary; }
 }
